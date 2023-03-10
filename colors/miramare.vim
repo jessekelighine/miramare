@@ -14,6 +14,7 @@ endif
 set background=dark
 
 let s:t_Co = exists('&t_Co') && !empty(&t_Co) && &t_Co > 1 ? &t_Co : 2
+let s:t_Co = 256
 
 let g:colors_name = 'miramare'
 " }}}
@@ -159,13 +160,13 @@ elseif s:configuration.cursor ==# 'purple'
   call s:HL('Cursor', s:palette.bg0, s:palette.purple)
   call s:HL('lCursor', s:palette.bg0, s:palette.purple)
 endif
-call s:HL('CursorColumn', s:palette.none, s:palette.bg1)
-call s:HL('CursorLine', s:palette.none, s:palette.bg1)
+call s:HL('CursorColumn', s:palette.none, s:palette.bg3)
+call s:HL('CursorLine', s:palette.none, s:palette.bg3)
 call s:HL('LineNr', s:palette.grey, s:palette.none)
 if &relativenumber == 1 && &cursorline == 0
-  call s:HL('CursorLineNr', s:palette.fg, s:palette.none)
+  call s:HL('CursorLineNr', s:palette.fg, s:palette.bg3)
 else
-  call s:HL('CursorLineNr', s:palette.fg, s:palette.bg1)
+  call s:HL('CursorLineNr', s:palette.fg, s:palette.bg3)
 endif
 call s:HL('DiffAdd', s:palette.none, s:palette.bg_green)
 call s:HL('DiffChange', s:palette.none, s:palette.bg_blue)
@@ -178,8 +179,8 @@ call s:HL('ModeMsg', s:palette.fg, s:palette.none, 'bold')
 call s:HL('MoreMsg', s:palette.blue, s:palette.none, 'bold')
 call s:HL('IncSearch', s:palette.none, s:palette.none, 'reverse')
 call s:HL('Search', s:palette.bg0, s:palette.red)
-call s:HL('MatchParen', s:palette.none, s:palette.none, 'reverse')
-call s:HL('NonText', s:palette.grey, s:palette.none)
+call s:HL('MatchParen',     s:palette.none,   s:palette.bg4,  'bold')
+call s:HL('NonText',        s:palette.bg4,    s:palette.none)
 call s:HL('Pmenu', s:palette.fg, s:palette.bg2)
 call s:HL('PmenuSbar', s:palette.none, s:palette.bg2)
 call s:HL('PmenuThumb', s:palette.none, s:palette.grey)
@@ -190,15 +191,15 @@ call s:HL('SpellBad', s:palette.red, s:palette.none, 'undercurl', s:palette.red)
 call s:HL('SpellCap', s:palette.yellow, s:palette.none, 'undercurl', s:palette.yellow)
 call s:HL('SpellLocal', s:palette.blue, s:palette.none, 'undercurl', s:palette.blue)
 call s:HL('SpellRare', s:palette.purple, s:palette.none, 'undercurl', s:palette.purple)
-call s:HL('StatusLine', s:palette.fg, s:palette.bg3)
+call s:HL('StatusLine',     s:palette.bg1,    s:palette.yellow)
 call s:HL('StatusLineTerm', s:palette.fg, s:palette.bg3)
-call s:HL('StatusLineNC', s:palette.grey, s:palette.bg1)
+call s:HL('StatusLineNC',   s:palette.bg1,    s:palette.fg)
 call s:HL('StatusLineTermNC', s:palette.grey, s:palette.bg1)
 call s:HL('TabLine', s:palette.fg, s:palette.bg4)
 call s:HL('TabLineFill', s:palette.grey, s:palette.bg1)
-call s:HL('TabLineSel', s:palette.bg0, s:palette.green)
+call s:HL('TabLineSel',     s:palette.bg0,    s:palette.gold)
 call s:HL('VertSplit', s:palette.bg4, s:palette.none)
-call s:HL('Visual', s:palette.bg0, s:palette.gold)
+call s:HL('Visual',         s:palette.none,   s:palette.bg1,  'reverse')
 call s:HL('VisualNOS', s:palette.bg0, s:palette.gold, 'underline')
 call s:HL('CursorIM', s:palette.none, s:palette.fg)
 call s:HL('ToolbarLine', s:palette.none, s:palette.grey)
@@ -257,7 +258,7 @@ call s:HL('SpecialChar', s:palette.yellow, s:palette.none)
 call s:HL('Character', s:palette.green, s:palette.none)
 call s:HL('Macro', s:palette.cyan, s:palette.none)
 call s:HL('Identifier', s:palette.blue, s:palette.none)
-call s:HL('SpecialKey', s:palette.blue, s:palette.none)
+call s:HL('SpecialKey',     s:palette.bg4,    s:palette.none)
 if s:configuration.enable_italic_string
   call s:HL('String', s:palette.green, s:palette.none, 'italic')
 else
@@ -324,8 +325,8 @@ call s:HL('markdownH4', s:palette.green, s:palette.none, 'bold')
 call s:HL('markdownH5', s:palette.blue, s:palette.none, 'bold')
 call s:HL('markdownH6', s:palette.purple, s:palette.none, 'bold')
 call s:HL('markdownUrl', s:palette.blue, s:palette.none, 'underline')
-call s:HL('markdownItalic', s:palette.none, s:palette.none, 'italic')
-call s:HL('markdownBold', s:palette.none, s:palette.none, 'bold')
+call s:HL('markdownItalic', s:palette.blue,   s:palette.none, 'italic')
+call s:HL('markdownBold',   s:palette.purple, s:palette.none, 'bold')
 call s:HL('markdownItalicDelimiter', s:palette.grey, s:palette.none, 'italic')
 highlight! link markdownCode Green
 highlight! link markdownCodeBlock Cyan
